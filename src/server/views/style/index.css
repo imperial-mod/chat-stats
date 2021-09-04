@@ -1,0 +1,255 @@
+* {
+    --blur-strength: 80px;
+
+    user-select: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--text);
+}
+
+@font-face {
+    font-family: "minecraft-regular";
+    src: url("/assets/fonts/minecraft-regular.otf");
+}
+
+@media (prefers-color-scheme: dark) {
+    * {
+        --text: #ffffff;
+        --text-shadow: #3f3f3f;
+        --background-tone1: #0a0a0aa0;
+        --background-tone2: #1b1b1ba0;
+        --background-tone3: #222222a0;
+    }	
+}
+
+@media (prefers-color-scheme: light) {
+    * {
+        --text: #000000;
+        --text-shadow: #000000;
+        --background-tone1: #ffffffaa;
+        --background-tone2: #e7e7e7aa;
+        --background-tone3: #dadadaaa;
+    }	
+}
+
+:root, html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-image: url("../assets/images/settings.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+}
+
+#nav-container {
+    height: 100%;
+    min-width: 330px;
+    width: 15%;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+#nav {
+    height: 100%;
+    max-width: 100%;
+    backdrop-filter: blur(var(--blur-strength));
+    background-color: var(--background-tone2);
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+#branding {
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+}
+
+#branding-icon {
+    width: 50px;
+    height: 50px;
+}
+
+#branding-text {
+    font-size: 28px;
+    height: 100%;
+    line-height: 50px;
+    margin-left: 10px;
+}
+
+.nav-button {
+    display: block;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--text);
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.25s;
+}
+
+.nav-button:hover {
+    background-color: var(--background-tone1);
+}
+
+#settings {
+    flex: 1;
+    box-sizing: border-box;
+    padding: 15px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+#settings::-webkit-scrollbar {
+    background-color: transparent;
+    width: 7px;
+}
+
+#settings::-webkit-scrollbar-thumb {
+    background-color: var(--background-tone1);
+    backdrop-filter: blur(var(--blur-strength));
+    width: 10px;
+    border-radius: 3.5px;
+}
+
+.settings-group {
+    background-color: var(--background-tone2);
+    backdrop-filter: blur(var(--blur-strength));
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+.settings-group:first-of-type {
+    margin-top: 0px;
+}
+
+.group-title {
+    display: block;
+    font-size: 24px;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.group-organizer {
+    width: 100%;
+    height: 1px;
+    background-color: var(--background-tone1);
+    margin: 5px 0;
+}
+
+.minecraft-text {
+    font-family: "minecraft-regular";
+    font-size: 18px;
+    background-color: var(--background-tone3);
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-shadow: 4px 4px var(--text-shadow);
+}
+
+.setting-label {
+    font-size: 18px;
+    width: 100%;
+    margin: 10px 0;
+    font-style: italic;
+    display: block;
+}
+
+.setting-label.inline {
+    display: inline;
+}
+
+.setting-label.inline::before {
+    content: "";
+    display: block;
+}
+
+.setting-label.inline::after {
+    margin: 0px 5px;
+    content: "\2014";
+}
+
+.setting {
+	margin: 5px 0;
+}
+
+.setting-box {
+	display: flex;
+	flex-direction: row;
+}
+
+.settings-input {
+	display: inline-block;
+	background-color: var(--background-tone1);
+	min-width: 150px;
+	width: 10%;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.settings-input.wide {
+	display: block;
+	width: 100%;
+	min-width: none;
+}
+
+.settings-toggle {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 20px;
+    border-radius: 10px;
+    border: solid var(--text) 1px;
+}
+
+.settings-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    left: 2px;
+    background-color: transparent;
+    transition-duration: 300ms;
+    height: 16px;
+    width: 0px;
+    border-radius: 8px;
+    transform: translateY(-50%);
+    background-color: transparent;
+}
+
+.toggle-slider::before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: var(--text);
+    opacity: 0.3;
+    transition-duration: 300ms;
+    backdrop-filter: blur(var(--blur-strength));
+}
+
+input:checked + .toggle-slider {
+    background-color: var(--background-tone1);
+	width: 44px;
+}
+
+input:checked + .toggle-slider::before {
+    transform: translateX(28px);
+    opacity: 1;
+}

@@ -9,7 +9,10 @@
 		"alwaysStrict": true,
 		"strictPropertyInitialization": false,
 		"downlevelIteration": true,
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"lib": [
+			"DOM"
+		]
     },
     "exclude": [
         "node_modules",
